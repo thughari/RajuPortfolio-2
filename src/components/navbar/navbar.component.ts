@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <nav class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-white/5 bg-slate-950/80 backdrop-blur-md">
-      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         <!-- Logo -->
         <a href="#home" class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
           RB.
@@ -27,23 +27,23 @@ import { CommonModule } from '@angular/common';
         </div>
 
         <!-- Mobile Menu Button -->
-        <button (click)="toggleMenu()" class="md:hidden text-slate-300 hover:text-white focus:outline-none">
+        <button (click)="toggleMenu()" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2 -mr-2">
           <i class="fas" [class]="isOpen() ? 'fa-times' : 'fa-bars'"></i>
         </button>
       </div>
 
       <!-- Mobile Menu Dropdown -->
       @if (isOpen()) {
-        <div class="md:hidden bg-slate-900 border-b border-white/10 px-6 py-4 absolute w-full">
-          <div class="flex flex-col space-y-4">
+        <div class="md:hidden bg-slate-900/95 backdrop-blur-xl border-b border-white/10 px-4 sm:px-6 py-6 absolute w-full shadow-2xl">
+          <div class="flex flex-col space-y-5">
             @for (item of navItems; track item.label) {
               <a [href]="item.href"
                  (click)="closeMenu()"
-                 class="text-slate-300 hover:text-blue-400 text-sm font-medium">
+                 class="text-slate-300 hover:text-blue-400 text-base font-medium block">
                 {{ item.label }}
               </a>
             }
-            <button (click)="downloadResume()" class="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-semibold w-full text-center">
+            <button (click)="downloadResume()" class="bg-blue-600 text-white px-5 py-3 rounded-xl text-sm font-semibold w-full text-center shadow-lg shadow-blue-600/20 mt-2">
               Download Resume
             </button>
           </div>
